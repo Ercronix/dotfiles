@@ -109,6 +109,20 @@ if command -v claude >/dev/null; then
 fi
 
 # --- machine-specific -------------------------------------------------------
+# DMS regenerates these from the wallpaper, so each machine keeps its own.
+DMS_COLOR_FILES=(
+  .config/DankMaterialShell/firefox.css
+  .config/gtk-3.0/dank-colors.css
+  .config/gtk-4.0/dank-colors.css
+  .config/hypr/dms/colors.lua
+  .config/kitty/dank-tabs.conf
+  .config/kitty/dank-theme.conf
+  .config/niri/dms/colors.kdl
+  .config/zed/themes/dank-zed-theme.json
+)
+step "Ignoring local changes to DMS color files"
+dot update-index --skip-worktree "${DMS_COLOR_FILES[@]}"
+
 outputs=".config/hypr/dms/outputs.lua"
 if [[ -t 0 ]]; then
   read -rp $'\nKeep monitor layout ('"$outputs"') local to this machine? [y/N] ' ans

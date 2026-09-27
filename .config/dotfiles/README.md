@@ -43,6 +43,8 @@ Neovim config is included here (formerly Ercronix/nvim-config).
 
 `~/.config/hypr/dms/outputs.lua` holds monitor layout — adjust per machine (or `dot update-index --skip-worktree` it).
 
+DMS color files (`dank-colors.css`, `dank-theme.conf`, `colors.lua`, …) are regenerated from the wallpaper, so `bootstrap.sh` marks them `--skip-worktree` and they stay out of `dot status`. Undo with `dot update-index --no-skip-worktree <file>`; list them with `dot ls-files -v | grep '^S'`.
+
 ## Claude Code MCP servers
 
 `~/.claude.json` is not tracked (it holds account state and tokens). After `claude` login and `gh auth login`, run:
