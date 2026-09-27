@@ -48,6 +48,8 @@ bash <(gh api repos/Ercronix/dotfiles/contents/.config/dotfiles/bootstrap-wsl.sh
 
 It installs zsh, oh-my-zsh + powerlevel10k + plugins and the CLI tools (via Homebrew, since apt's are outdated), then runs `bootstrap.sh --no-packages`. It also writes `~/.config/wezterm/wezterm.lua` to `%USERPROFILE%\.wezterm.lua` and downloads the Nerd Font into Windows `Downloads`. Finish by running `winget install wez.wezterm` and installing the font's `.ttf` files.
 
+WezTerm uses the kitty colors. DMS changes those with the wallpaper, so after a wallpaper change run `~/.config/dotfiles/kitty-to-wezterm.sh`, commit, and re-run `bootstrap-wsl.sh` at work.
+
 `.zshrc` works on both systems: it uses the CachyOS zsh config when it exists and `~/.oh-my-zsh` otherwise, and it only sets up tools that are installed.
 
 Neovim config is included here (formerly Ercronix/nvim-config).
