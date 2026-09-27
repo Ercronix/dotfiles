@@ -14,12 +14,12 @@ hl.config({
 		-- empty inherits XKB_DEFAULT_LAYOUT (libxkbcommon), falls back to "us"
 		kb_layout = "de",
 		numlock_by_default = true,
-		follow_mouse = 0,
+		follow_mouse = 1,
 		touchpad = {
 			tap_to_click = true,
 			natural_scroll = true,
 		},
-    accel_profile = flat,
+    accel_profile = "flat",
 	},
 	general = {
 		gaps_in = 5,
