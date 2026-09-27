@@ -31,3 +31,11 @@ Neovim config is included here (formerly Ercronix/nvim-config).
 ## Machine-specific
 
 `~/.config/hypr/dms/outputs.lua` holds monitor layout — adjust per machine (or `dot update-index --skip-worktree` it).
+
+## Claude Code MCP servers
+
+`~/.claude.json` is not tracked (it holds account state and tokens). After `claude` login and `gh auth login`, run:
+
+```sh
+~/.config/dotfiles/setup-mcp.sh     # or: GITHUB_MCP_TOKEN=<pat> ~/.config/dotfiles/setup-mcp.sh
+```
