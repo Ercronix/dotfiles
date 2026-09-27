@@ -1,0 +1,131 @@
+/*
+ *  __        _____ ___   ____  ___  _   _ _____
+ *  \ \      / / _ \_ _| / ___||_ _| | | |_   _|
+ *   \ \ /\ / / | | | |  \___ \ | || | | | | |
+ *    \ V  V /| |_| | |   ___) || || |_| | | |
+ *     \_/\_/  \___/___| |____/|___|\___/  |_|
+ *
+ * wlogout stylesheet — performance-optimised
+ * Based on ml4w dotfiles by Stephan Raabe (2023)
+ * ----------------------------------------------------- */
+
+/* -----------------------------------------------------
+ * Import Pywal colors
+ * ----------------------------------------------------- */
+@import url("file:///home/timmo/.cache/wal/colors-waybar.css");
+@define-color primary    @color1;
+@define-color on_primary @foreground;
+@define-color shadow     @color0;
+
+/* -----------------------------------------------------
+ * General
+ * FIX: Removed transition: 20ms (too short → jank).
+ *      Using 150ms only on properties that are cheap to
+ *      animate (background-color, color, opacity).
+ *      box-shadow is already none here, which is correct.
+ * ----------------------------------------------------- */
+* {
+    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    background-image: none;
+    box-shadow: none;
+}
+
+/* -----------------------------------------------------
+ * Window
+ * FIX: Replaced expensive background: url(...) + cover
+ *      with a solid semi-transparent colour.
+ *      Set the blurred wallpaper in your compositor
+ *      (e.g. hyprlock / swaylock layer) instead.
+ *      If you really want the image, see the comment
+ *      below — but expect some slowdown on low-end GPUs.
+ * ----------------------------------------------------- */
+window {
+    /* Option A (fast — recommended) */
+    background-color: alpha(@color0, 0.90);
+
+    /* Option B (original look, may be slow on some GPUs)
+    background: url("../../../../.cache/ml4w/hyprland-dotfiles/blurred_wallpaper.png");
+    background-size: cover;
+    */
+
+    font-size: 16pt;
+}
+
+/* -----------------------------------------------------
+ * Buttons — base state
+ * FIX: Transition only cheap properties.
+ *      background-size is NOT transitioned (causes
+ *      continuous repaints when it changes).
+ * ----------------------------------------------------- */
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22%;
+    border-radius: 20px;
+    border: 1px solid @primary;
+    color: @foreground;
+    background-color: alpha(@primary, 0.2);
+    margin: 10px;
+    min-width: 150px;
+    min-height: 150px;
+
+    /* Animate only colour & opacity — GPU-friendly */
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+/* -----------------------------------------------------
+ * Focus state
+ * ----------------------------------------------------- */
+button:focus {
+    background-color: alpha(@primary, 0.5);
+    background-size: 22%;   /* keep same size — no repaint */
+    border: 1px solid @primary;
+    outline: none;
+}
+
+/* -----------------------------------------------------
+ * Hover state
+ * FIX: Removed box-shadow (very expensive in GTK/wlroots).
+ *      Removed background-size change on hover.
+ *      Color transition is handled by the rule above.
+ * ----------------------------------------------------- */
+button:hover {
+    background-color: alpha(@primary, 0.9);
+    color: @on_primary;
+    background-size: 22%;   /* static — avoids layout thrash */
+    /* box-shadow intentionally omitted */
+}
+
+/* -----------------------------------------------------
+ * Icon text inside buttons
+ * ----------------------------------------------------- */
+button span {
+    font-size: 1.2em;
+}
+
+/* -----------------------------------------------------
+ * Individual buttons
+ * ----------------------------------------------------- */
+#lock {
+    background-image: image(url("icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("icons/reboot.png"));
+}

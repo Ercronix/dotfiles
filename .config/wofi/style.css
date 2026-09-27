@@ -1,0 +1,52 @@
+@import ".cache/wal/colors-waybar.css";
+
+* {
+    font-family: "Hack", monospace;
+}
+
+window {
+    background-color: alpha(@background, 0.85);
+    border-radius: 12px;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 6px;
+    border: none;
+    background-color: alpha(@color0, 0.75); /* cachydgreen */
+    color: @foreground; /* cachywhite */
+    padding: 6px;
+}
+
+#inner-box {
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 2px;
+    padding: 10px;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#text {
+    padding: 4px;
+    color: @color7;
+}
+
+#entry:nth-child(even){
+ background-color: alpha(@color0, 0.55);
+}
+
+#entry:selected {
+    background-color: alpha(@color4, 0.85);
+    border-radius: 6px;
+}
+
+#text:selected {
+    background: @background;
+    background: transparent;
+}

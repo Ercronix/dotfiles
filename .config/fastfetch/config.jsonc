@@ -1,0 +1,24 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "CachyOS_small",
+    "padding": { "top": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 8 }
+  },
+  "modules": [
+    "break",
+    { "type": "os",       "key": "os",    "keyColor": "cyan",    "format": "{name}" },
+    { "type": "kernel",   "key": "kern",  "keyColor": "cyan" },
+    { "type": "wm",       "key": "wm",    "keyColor": "green",   "format": "{pretty-name}" },
+    { "type": "shell",    "key": "shell", "keyColor": "green",   "format": "{pretty-name}" },
+    { "type": "terminal", "key": "term",  "keyColor": "green",   "format": "{pretty-name}" },
+    { "type": "packages", "key": "pkgs",  "keyColor": "yellow" },
+    { "type": "memory",   "key": "mem",   "keyColor": "yellow",  "format": "{used} / {total}" },
+    { "type": "uptime",   "key": "up",    "keyColor": "yellow" },
+    "break",
+    { "type": "colors", "symbol": "circle" }
+  ]
+}

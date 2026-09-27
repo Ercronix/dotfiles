@@ -1,0 +1,24 @@
+[user]
+	name = mornhinweg
+	email = 99897461+Ercronix@users.noreply.github.com
+[core]
+	pager = command -v delta >/dev/null && exec delta || exec less
+[interactive]
+	diffFilter = command -v delta >/dev/null && exec delta --color-only || exec cat
+[delta]
+	navigate = true
+	line-numbers = true
+[merge]
+	conflictStyle = zdiff3
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[includeIf "hasconfig:remote.*.url:https://git.it.hs-heilbronn.de/**"]
+	path = ~/.gitconfig-uni
+[includeIf "hasconfig:remote.*.url:git@git.it.hs-heilbronn.de:*/**"]
+	path = ~/.gitconfig-uni
