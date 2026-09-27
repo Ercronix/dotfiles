@@ -26,7 +26,7 @@ dot checkout 2>&1 | grep -E '^\s+\.' | awk '{print $1}' | \
 dot checkout
 ```
 
-Neovim config lives in its own repo: `git clone git@github.com:Ercronix/nvim-config.git ~/.config/nvim`
+Neovim config is included here (formerly Ercronix/nvim-config).
 
 ## Machine-specific
 
