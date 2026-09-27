@@ -15,6 +15,15 @@ dot pull                        # on the other PC
 
 ## Setup on a new machine
 
+Quick way (installs packages, clones, backs up conflicting files, checks out, sets zsh, installs Claude Code + MCP):
+
+```sh
+sudo pacman -S --needed git github-cli && gh auth login
+bash <(gh api repos/Ercronix/dotfiles/contents/.config/dotfiles/bootstrap.sh -H 'Accept: application/vnd.github.raw')
+```
+
+Add `--no-packages` to skip package installs. Safe to re-run. Manual steps below.
+
 ```sh
 git clone --bare git@github.com:Ercronix/dotfiles.git ~/.dotfiles
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
