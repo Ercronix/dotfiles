@@ -39,14 +39,29 @@ dot checkout
 
 ### Windows + WSL (Ubuntu)
 
-Same shell, prompt and tools, with WezTerm instead of kitty. In the WSL Ubuntu shell:
+Same shell, prompt and tools, with WezTerm instead of kitty.
+
+**1. In the WSL Ubuntu shell** (no Ubuntu yet? run `wsl --install -d Ubuntu` in PowerShell first):
 
 ```sh
-sudo apt update && sudo apt install -y git gh && gh auth login
+sudo apt update && sudo apt install -y git gh
+gh auth login    # choose HTTPS + browser login, so no SSH key is needed
 bash <(gh api repos/Ercronix/dotfiles/contents/.config/dotfiles/bootstrap-wsl.sh -H 'Accept: application/vnd.github.raw')
 ```
 
-It installs zsh, oh-my-zsh + powerlevel10k + plugins and the CLI tools (via Homebrew, since apt's are outdated), then runs `bootstrap.sh --no-packages`. It also writes `~/.config/wezterm/wezterm.lua` to `%USERPROFILE%\.wezterm.lua` and downloads the Nerd Font into Windows `Downloads`. Finish by running `winget install wez.wezterm` and installing the font's `.ttf` files.
+It installs zsh, oh-my-zsh + powerlevel10k + plugins and the CLI tools (via Homebrew, since apt's are outdated; this takes a few minutes), then runs `bootstrap.sh --no-packages`. It asks for your password for sudo and again for switching to zsh. The monitor layout question is Hyprland-only, so either answer is fine. It also writes `~/.config/wezterm/wezterm.lua` to `%USERPROFILE%\.wezterm.lua` and downloads the Nerd Font into Windows `Downloads`.
+
+**2. On Windows:**
+
+- Install WezTerm: `winget install wez.wezterm` (or the portable zip from wezterm.org if winget is blocked).
+- Install the font: open the folder the script printed, select all `.ttf` files, right-click > Install (per-user, no admin needed).
+
+**3. Start WezTerm.** It opens straight into Ubuntu.
+
+If something goes wrong:
+
+- A download fails: a company proxy or firewall is probably blocking GitHub or Homebrew.
+- WezTerm doesn't open into Ubuntu: `default_domain` in `%USERPROFILE%\.wezterm.lua` must match the name `wsl -l` shows.
 
 WezTerm uses the kitty colors. DMS changes those with the wallpaper, so after a wallpaper change run `~/.config/dotfiles/kitty-to-wezterm.sh`, commit, and re-run `bootstrap-wsl.sh` at work.
 
