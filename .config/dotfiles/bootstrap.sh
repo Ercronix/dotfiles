@@ -17,7 +17,7 @@ PACMAN_PKGS=(
   zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting
   hyprland hyprpaper dms-shell dms-shell-hyprland dms-shell-niri matugen
   kitty neovim waybar wofi wlogout waypaper yazi btop fastfetch micro
-  atuin zoxide eza fzf git-delta zed
+  atuin zoxide eza fzf bat fd ripgrep git-delta zed
   ttf-jetbrains-mono-nerd ttf-meslo-nerd ttf-nerd-fonts-symbols
 )
 AUR_PKGS=(quickshell-git dankcalendar-bin)
