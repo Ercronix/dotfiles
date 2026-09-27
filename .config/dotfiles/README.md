@@ -19,6 +19,8 @@ dot pull                        # on the other PC
 git clone --bare git@github.com:Ercronix/dotfiles.git ~/.dotfiles
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dot config status.showUntrackedFiles no
+dot config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+dot fetch && dot branch -u origin/main main
 # back up any existing files that would be overwritten, then check out
 mkdir -p ~/.dotfiles-backup
 dot checkout 2>&1 | grep -E '^\s+\.' | awk '{print $1}' | \
